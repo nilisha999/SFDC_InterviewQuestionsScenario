@@ -1,0 +1,40 @@
+<template>
+  <lightning-card title="Contact Data Record Edit">
+    <lightning-record-edit-form
+      record-id="003Ig000008RZYFIA4"
+      object-api-name="Contact"
+    >
+      <lightning-messages> </lightning-messages>
+      <lightning-output-field field-name="AccountId"> </lightning-output-field>
+      <lightning-input-field field-name="FirstName"> </lightning-input-field>
+      <lightning-input-field field-name="LastName"> </lightning-input-field>
+      <lightning-input-field field-name="Email"> </lightning-input-field>
+      <lightning-button
+        class="slds-m-top_small"
+        variant="brand"
+        type="submit"
+        name="update"
+        label="Update"
+      >
+      </lightning-button>
+    </lightning-record-edit-form>
+  </lightning-card>
+  <lightning-card>
+    <lightning-record-edit-form
+      record-id="001Ig00000CUxBxIAL"
+      object-api-name="Account"
+    >
+      <lightning-output-field field-name="Name"> </lightning-output-field>
+      <lightning-input-field field-name="Phone"> </lightning-input-field>
+      <lightning-input-field field-name="Industry"> </lightning-input-field>
+      <lightning-button
+        class="slds-m-top_small"
+        variant="brand"
+        type="submit"
+        name="update"
+        label="Update"
+      >
+      </lightning-button>
+    </lightning-record-edit-form>
+  </lightning-card>
+</template>
