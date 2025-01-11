@@ -1,0 +1,41 @@
+public with sharing class AccountBasicDatatableController {
+    @AuraEnabled(cacheable=true)
+    public static List<Account> getAccounts(String searchKey) {
+        String searchQuery = '%' + searchKey + '%';
+        return [SELECT Id, Name, Phone FROM Account WHERE Name LIKE :searchQuery ORDER BY CreatedDate ASC LIMIT 10];
+    }
+
+    @AuraEnabled(cacheable=true)
+    public static AccountPaginationDetails getAccountsBasedOnPageNumber(Integer pageNumber, Integer pageSize, String searchKey) {
+        Integer offset = (pageNumber - 1) * pageSize;
+        AccountPaginationDetails data = new AccountPaginationDetails();
+        data.pageNumber = pageNumber;
+        data.pageSize = pageSize;
+
+        String searchQuery = '%' + searchKey + '%';
+        // Corrected query parameter
+        data.totalItemCount = [SELECT COUNT() FROM Account WHERE Name LIKE :searchQuery];
+        data.records = Database.query(
+            'SELECT Id, Name, Rating, Industry, AnnualRevenue, Phone FROM Account WHERE Name LIKE :searchQuery ORDER BY Name ' +
+            'LIMIT :pageSize OFFSET :offset'
+        );
+        return data;
+    }
+
+    @AuraEnabled(cacheable=true)
+    public static List<Account> getAllAccounts(String searchKey) {
+        String searchQuery = '%' + searchKey + '%';
+        return [SELECT Id, Name, Rating, Industry, AnnualRevenue, Phone FROM Account WHERE Name LIKE :searchQuery ORDER BY Name];
+    }
+
+    public class AccountPaginationDetails {
+        @AuraEnabled
+        public Integer pageNumber;
+        @AuraEnabled
+        public Integer pageSize;
+        @AuraEnabled
+        public Integer totalItemCount;
+        @AuraEnabled
+        public List<Account> records;
+    }
+}
