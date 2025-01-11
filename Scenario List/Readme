@@ -1,0 +1,13 @@
+🔥 Salesforce Interview Scenario Question 🔥
+
+This question was asked in a Infosys interview for Salesforce developers with 3+ years of experience:
+
+The Question:
+You need to create an LWC that allows users to search for Accounts by Name and displays the results with pagination.
+
+👉 Your Task:
+Implement server-side SOQL querying for efficient search.
+Ensure the results are displayed in pages of 10 records each, with Next and Previous buttons for navigation.
+
+📩 DM me to discuss the solution or share your approach!
+hashtag#SalesforceInterview hashtag#LWC hashtag#Pagination hashtag#Infosys
