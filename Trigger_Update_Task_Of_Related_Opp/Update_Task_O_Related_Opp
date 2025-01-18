@@ -1,0 +1,22 @@
+Salesforce Professionals – Let’s Discuss a Trigger Scenario!
+
+🌟 Salesforce interview scenarios at Dell Technologies interview for 3 years experience candidate:
+
+Scenario:
+A logistics company needs to ensure the following:
+ • When the Stage of an Opportunity changes:
+ • If Stage = “Closed Won” ➡️ Update related Tasks’ Status to “Completed.”
+ • If Stage = “Closed Lost” ➡️ Update related Tasks’ Status to “In Progress.”
+
+🛠️ Key Challenges:
+1️⃣ Handle bulk updates efficiently (e.g., updating multiple Opportunities simultaneously).
+2️⃣ Ensure the solution avoids recursion and governor limit issues.
+3️⃣ Make it scalable for a growing number of records.
+
+💬 How would you approach this?
+ • Would you use maps for optimal processing?
+ • How would you ensure performance and prevent errors in bulk operations?
+
+Share your thoughts, solutions, or tips in the comments. Let’s learn together! 🚀
+
+hashtag#Salesforce hashtag#Apex hashtag#Triggers hashtag#dell hashtag#interviewquestions hashtag#sfdc
