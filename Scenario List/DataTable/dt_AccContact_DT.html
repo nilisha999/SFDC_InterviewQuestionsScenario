@@ -1,0 +1,106 @@
+<template>
+  <lightning-card
+    title="How to display the Contacts based on Account Name in LWC"
+    custom-icon="custom:icon13"
+  >
+    <div class="slds slds-p-horizontal--medium">
+      <div class="slds-grid slds-wrap">
+        <div class="slds-col slds-size_4-of-12 slds-m-bottom--medium">
+          <lightning-input
+            type="search"
+            placeholder="Search..."
+            value={accountName}
+            name="accountName"
+            class="accountName"
+            onchange={handleChangeAccName}
+          ></lightning-input>
+        </div>
+
+        <div
+          class="slds-col slds-size_6-of-12 slds-m-top--medium"
+          style="margin-top: 19px; margin-left: 10px"
+        >
+          <lightning-button
+            label="Search Account Name"
+            size="small"
+            variant="brand"
+            onclick={handleAccountSearch}
+            icon-name="utility:search"
+            icon-position="right"
+          ></lightning-button>
+        </div>
+      </div>
+
+      <h2>
+        Account Name: - <span><strong>{currentAccountName}</strong></span>
+      </h2>
+      <br />
+
+      <h3>
+        <strong><span style="color: brown">{dataNotFound}</span></strong>
+      </h3>
+      <br />
+
+      <h2
+        class="slds-m-bottom--x-small"
+        style="color: darkslateblue; font-weight: bold"
+      >
+        Displaying Contacts Records based on Account Name
+      </h2>
+
+      <!-- Previous table for displaying contacts -->
+      <table
+        class="slds-table slds-table_cell-buffer slds-table_bordered"
+        border="1"
+        cellspacing="0"
+        cellpadding="0"
+        bordercolor="#ccc"
+        style="border-collapse: collapse"
+      >
+        <thead>
+          <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Account Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          <template for:each={records} for:item="conItem">
+            <tr key={conItem.Id}>
+              <td>{conItem.FirstName}</td>
+              <td>{conItem.LastName}</td>
+              <td>{conItem.Email}</td>
+              <td>{conItem.Phone}</td>
+              <td>{conItem.Account.Name}</td>
+            </tr>
+          </template>
+        </tbody>
+      </table>
+
+      <br /><br />
+
+      <!-- lightning-datatable for additional contact data -->
+      <lightning-datatable
+        key-field="Id"
+        data={records}
+        columns={columns}
+        show-row-number-column
+        row-number-offset={rowOffset}
+        suppress-bottom-bar
+        draft-values={draftValues}
+        onsave={handleSave}
+        onrowaction={handleRowAction}
+      ></lightning-datatable>
+
+      <!-- Custom save button -->
+      <lightning-button
+        label="Save Changes"
+        variant="brand"
+        onclick={handleSave}
+        class="slds-m-top--medium"
+      ></lightning-button>
+    </div>
+  </lightning-card>
+</template>
